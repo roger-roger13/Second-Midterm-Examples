@@ -6,7 +6,7 @@ using namespace std;
 class Book {
 protected:
     char isbn[20], title[50], author[30];
-    double base_price;
+    float base_price;
 
     void copy(const Book &b) {
         strcpy(isbn, b.isbn);
@@ -15,7 +15,7 @@ protected:
         base_price = b.base_price;
     }
 public:
-    Book(char *isbn = "", char *title = "", char *author = "", double base_price = 0) {
+    Book(char *isbn = "", char *title = "", char *author = "", float base_price = 0) {
         strcpy(this->isbn, isbn);
         strcpy(this->title, title);
         strcpy(this->author, author);
@@ -26,7 +26,7 @@ public:
         copy(b);
     }
 
-    virtual double price() = 0;
+    virtual float price() = 0;
     virtual bool operator >(Book &b) = 0;
     friend ostream &operator <<(ostream &os, Book &b);
     virtual ~Book(){};
@@ -48,7 +48,7 @@ private:
         size = ob.size;
     }
 public:
-    OnlineBook(char *isbn = "", char *title = "", char *author = "", double base_price = 0, char *url = "", int size = 0) : Book(isbn, title, author, base_price) {
+    OnlineBook(char *isbn = "", char *title = "", char *author = "", float base_price = 0, char *url = "", int size = 0) : Book(isbn, title, author, base_price) {
         this->url = new char[strlen(url) + 1];
         strcpy(this->url, url);
         this->size = size;
@@ -58,7 +58,7 @@ public:
         copy(ob);
     }
 
-    double price() {
+    float price() {
         if (size > 20) return base_price + (base_price * 0.2);
         else return base_price;
     }
@@ -95,15 +95,15 @@ ostream &operator <<(ostream &os, OnlineBook &ob) {
 
 class PrintBook : public Book {
 private:
-    double weight;
+    float weight;
     bool inStock;
 public:
-    PrintBook(char *isbn = "", char *title = "", char *author = "", double base_price = 0, double weight = 0, bool inStock = false) : Book(isbn, title, author, base_price) {
+    PrintBook(char *isbn = "", char *title = "", char *author = "", float base_price = 0, float weight = 0, bool inStock = false) : Book(isbn, title, author, base_price) {
         this->weight = weight;
         this->inStock = inStock;
     }
 
-    double price() {
+    float price() {
         if (weight > 0.7) return base_price + (base_price * 0.15);
         else return base_price;
     }
