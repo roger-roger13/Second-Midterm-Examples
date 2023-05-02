@@ -120,8 +120,6 @@ public:
     ~PrintBook() {}
 };
 
-void mostExpensiveBook(Book **books, int n);
-
 ostream &operator <<(ostream &os, PrintBook &pb) {
     os << pb.isbn << ": " << pb.title << ", " << pb.author << " " << pb.price() << endl;
     return os;
