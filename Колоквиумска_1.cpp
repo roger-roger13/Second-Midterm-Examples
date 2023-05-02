@@ -48,8 +48,7 @@ private:
         size = ob.size;
     }
 public:
-    OnlineBook(char *isbn = "", char *title = "", char *author = "",
-               double base_price = 0, char *url = "", int size = 0) : Book(isbn, title, author, base_price) {
+    OnlineBook(char *isbn = "", char *title = "", char *author = "", double base_price = 0, char *url = "", int size = 0) : Book(isbn, title, author, base_price) {
         this->url = new char[strlen(url) + 1];
         strcpy(this->url, url);
         this->size = size;
@@ -99,8 +98,7 @@ private:
     double weight;
     bool inStock;
 public:
-    PrintBook(char *isbn = "", char *title = "", char *author = "",
-         double base_price = 0, double weight = 0, bool inStock = false) : Book(isbn, title, author, base_price) {
+    PrintBook(char *isbn = "", char *title = "", char *author = "", double base_price = 0, double weight = 0, bool inStock = false) : Book(isbn, title, author, base_price) {
         this->weight = weight;
         this->inStock = inStock;
     }
