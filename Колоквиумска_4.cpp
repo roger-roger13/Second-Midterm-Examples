@@ -32,10 +32,7 @@ public:
     FlatPizza(char *name, char *ingredients, float base_price, Size size = SMALL) : Pizza(name, ingredients, base_price), size(size) {}
 
     float price() const override {
-        return (size == SMALL) ? base_price + (base_price * 0.1)
-                : (size == LARGE) ? base_price + (base_price * 0.2)
-                : (size == FAMILY) ? base_price + (base_price * 0.3)
-                : base_price;
+        return (size == SMALL) ? base_price * 1.1 : (size == LARGE) ? base_price * 1.2 : (size == FAMILY) ? base_price * 1.3 : base_price;
     }
 
     friend ostream &operator<<(ostream &os, FlatPizza &fp) {
